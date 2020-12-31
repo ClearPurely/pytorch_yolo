@@ -1,0 +1,54 @@
+
+makeTxt.py voc_label.py     用于给数据集划分训练集、验证集和测试集，并打标签
+train.py    用于训练模型
+test.py     用于测试模型
+detect.py   用于使用模型来检测目标
+models.py   用来转换模型，pt文件和weights文件转换，还有训练中保存模型
+drawLog.py  用于画图，数据的可视化
+myTest.py   我用来测试或使用函数功能
+
+utils模块    通用工具，可用数据可视化
+
+
+检测代码（detect.py）使用：
+    python detect.py --names data/names/coco.names --cfg cfg/yolov3.cfg --weights weights/yolov3.pt
+
+训练代码（train.py）使用：
+    python train.py --data data/voc.data --cfg cfg/yolov3-voc.cfg --weights weights/darknet53.conv.74 --epochs 100 --batch-size 2
+    python train.py --data data/voc.data --cfg cfg/yolov3-voc.cfg --weights weights/last.pt --epochs 100 --batch-size 2
+
+    python train.py --data data/voc.data --cfg cfg/yolov3-voc-tiny.cfg --weights weights/darknet53.conv.74 --epochs 100 --batch-size 2
+
+
+
+测试模型：
+    python test.py --data data/voc.data --cfg cfg/yolov3-voc.cfg --weights weights/last.pt --batch-size 2
+
+
+results文件参数（一共15列，从0开始）：
+    第0列：迭代次数；
+    第1列：
+    第2列：GIoU；
+    第3列：Objectness；
+    第4列：Classification；
+    第5列：
+    第6列：
+    第7列：
+    第8列：Precision
+    第9列：Recall
+    第10列：mAP@0.5
+    第11列：F1
+    第12列：val GIoU
+    第13列：val Objectness
+    第14列：val Classification
+
+
+
+日志：
+    1.使用apex；
+    2.修改保存方法；
+
+
+
+
+
